@@ -14,4 +14,8 @@ all_csv <- lapply(all_files, function(x) read.csv(file = paste0("csv/", x), head
 
 all_files <- gsub(".csv", ".xlsx", all_files)
 
+if(!dir.exists(file.path("excel"))){
+    dir.create("excel")
+}
+
 mapply(function(x, y) WriteXLS(x, paste0("excel/", y)), all_csv, all_files)
